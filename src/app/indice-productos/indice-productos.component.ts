@@ -16,8 +16,9 @@ import Swal from 'sweetalert2';
 export class IndiceProductosComponent {
 
   celularService = inject(CelularService);
-  celulares?: Celular[];
+  celulares: Celular[] = [];
   columnasAMostrar = ['marca', 'modelo', 'acciones']
+  cargado: boolean = false;
 
   constructor()
   {
@@ -27,6 +28,7 @@ export class IndiceProductosComponent {
   CargarProductos(){
     this.celularService.obtenerTodos().subscribe(celulares =>{
       this.celulares = celulares;
+      this.cargado = true;
     });
   }
 
